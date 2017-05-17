@@ -19,8 +19,8 @@ after_success:
   - './awscli-bundle/install -b ~/bin/aws'
   - 'export PATH=~/bin:$PATH'
 
-  - chmod +x deploy/travisCI/push-to-ecr-ecs.sh
   - chmod +x deploy/ecs-deploy.sh
+  - chmod +x deploy/push-to-ecr-ecs.sh
   - deploy/push-to-ecr-ecs.sh
 
 
