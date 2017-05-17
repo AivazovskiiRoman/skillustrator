@@ -11,17 +11,17 @@ services:
   - docker
 before_install:
 script:
-  - chmod +x deploy-ecs/build-images.sh
-  - deploy-ecs/build-images.sh
+  - chmod +x deploy/build-images.sh
+  - deploy/build-images.sh
 after_success:
   - 'curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"'
   - 'unzip awscli-bundle.zip'
   - './awscli-bundle/install -b ~/bin/aws'
   - 'export PATH=~/bin:$PATH'
 
-  - chmod +x deploy-ecs/travisCI/push-to-ecr-ecs.sh
-  - chmod +x deploy-ecs/ecs-deploy.sh
-  - deploy-ecs/push-to-ecr-ecs.sh.sh
+  - chmod +x deploy/travisCI/push-to-ecr-ecs.sh
+  - chmod +x deploy/ecs-deploy.sh
+  - deploy/push-to-ecr-ecs.sh.sh
 
 
 ### CI environment variables ###
