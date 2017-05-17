@@ -24,8 +24,6 @@ after_success:
   - deploy-ecs/push-to-ecr-ecs.sh.sh
 
 
-  
-  
 ### CI environment variables ###
 # AWS_ACCESS_KEY
 # AWS_SECRET_ACCESS_KEY
