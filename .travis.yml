@@ -21,7 +21,7 @@ after_success:
 
   - chmod +x deploy/travisCI/push-to-ecr-ecs.sh
   - chmod +x deploy/ecs-deploy.sh
-  - deploy/push-to-ecr-ecs.sh.sh
+  - deploy/push-to-ecr-ecs.sh
 
 
 ### CI environment variables ###
