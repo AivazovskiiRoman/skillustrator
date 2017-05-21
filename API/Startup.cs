@@ -34,10 +34,16 @@ namespace ConsoleApplication
                     options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
                 );;
 
-            services.AddEntityFrameworkNpgsql()
-                //.AddDbContext<SkillustratorContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
-                //.AddDbContext<SkillustratorContext>(options => options.UseNpgsql("User ID=postgres;Password=password;Server=172.18.0.2;Port=5432;Database=skillustrator;Integrated Security=true;Pooling=true;"));
-                .AddDbContext<SkillustratorContext>(options => options.UseNpgsql("User ID=postgres;Password=password;Server=postgres;Port=5432;Database=skillustrator;Integrated Security=true;Pooling=true;"));
+            services.AddMvc();
+
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            //services.AddEntityFrameworkNpgsql()
+            //.AddDbContext<SkillustratorContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+            //.AddDbContext<SkillustratorContext>(options => options.UseNpgsql("User ID=postgres;Password=password;Server=172.18.0.2;Port=5432;Database=skillustrator;Integrated Security=true;Pooling=true;"));
+            //.AddDbContext<SkillustratorContext>(options => options.UseNpgsql("User ID=postgres;Password=password;Server=postgres;Port=5432;Database=skillustrator;Integrated Security=true;Pooling=true;"));
+            services.AddDbContext<SkillustratorContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IArticlesRepository, ArticlesRepository>();
             services.AddScoped<IPersonRepository, PersonRepository>();
@@ -59,7 +65,12 @@ namespace ConsoleApplication
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
 
             // // Create DB on startup
             // using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())

@@ -10,7 +10,7 @@ namespace Skillustrator.Api.Infrastructure
         public DbSet<SkillLevel> SkillLevels { get; set; }        
         public DbSet<TimePeriod> TimePeriods { get; set; }
 
-        public SkillustratorContext(DbContextOptions options) : base(options)
+        public SkillustratorContext(DbContextOptions<SkillustratorContext> options) : base(options)
         {
         }
 
@@ -21,6 +21,7 @@ namespace Skillustrator.Api.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Article>();
 
             modelBuilder.Entity<Organization>()
