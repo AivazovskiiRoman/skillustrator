@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Skillustrator.Api.Entities;
 
 namespace Skillustrator.Api.Infrastructure
@@ -44,5 +44,7 @@ namespace Skillustrator.Api.Infrastructure
 
             modelBuilder.Entity<Tag>().Property(t => t.Name).IsRequired();
         }
+
+        public DbSet<Skillustrator.Api.Entities.Tag> Tag { get; set; }
     }
 }
