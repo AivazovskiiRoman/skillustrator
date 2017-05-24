@@ -4,6 +4,10 @@ namespace Skillustrator.Api.Entities
 {
     public class Person : EntityBase
     {
+        public Person()
+        {
+
+        }
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
