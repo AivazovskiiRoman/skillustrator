@@ -36,13 +36,9 @@ namespace ConsoleApplication
 
             services.AddMvc();
 
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
             // FOR POSTGRESQL
             services.AddEntityFrameworkNpgsql()
                 .AddDbContext<SkillustratorContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
-                //.AddDbContext<SkillustratorContext>(options => options.UseNpgsql("User ID=postgres;Password=password;Server=postgres;Port=5432;Database=skillustrator;Integrated Security=true;Pooling=true;"));
             // FOR SQL SERVER:
             //services.AddDbContext<SkillustratorContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
