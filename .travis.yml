@@ -5,6 +5,7 @@ branches:
  - master
  - staging
  - production
+ - /^hotfix-.*$/ 
 sudo: required
 chmod: +x
 services:

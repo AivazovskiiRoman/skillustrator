@@ -54,6 +54,7 @@ The entire app will spin up - UI (Angular 2), API (ASP.NET Core) and database (P
 **NOTE for Windows users**: 
     a) you must have the new bash installed (comes with Windows 10 Anniversary Update), and set up a C share in Docker settings. 
     b) **If you get an error that it can't run go.sh,* use git bash's (or install it in any bash) dos2unix go.sh to convert the Windows line endings to Unix for the container.
+    c) See this Docker Workshop for instuctions on getting a Docker app running on Windows, [https://github.com/excellalabs/docker-workshop-1](https://github.com/excellalabs/docker-workshop-1)
 
 1. If you haven't built yet, run: 
 
