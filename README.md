@@ -1,5 +1,7 @@
 # Skillustrator
 
+[![Build Status](https://travis-ci.org/excellalabs/skillustrator.svg?branch=master)](https://travis-ci.org/excellalabs/skillustrator)
+
 Welcome to Skillustrator, which allows organizations to the track skills of their people, get deeper insight into their organization's overall abilities, what kind of tasks and projects can be taken on, and where gaps are. 
 
 It allows skill tagging which opens up many scenarios that it can support. For example:
