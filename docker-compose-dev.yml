@@ -3,8 +3,8 @@ version: '2'
 services:
 
   api:
-    container_name: 'skillu_api'
-    image: 'excellalabs/skillustrator-api'
+    container_name: 'skillu-api-dev'
+    image: 'excellalabs/skillustrator-api-dev'
     build:
       context: ./API
       dockerfile: Dockerfile.Prod
@@ -16,8 +16,8 @@ services:
       - aspnetcoreapp-network
 
   ui:
-    container_name: 'skillu_ui'
-    image: 'excellalabs/skillustrator-ui'
+    container_name: 'skillu-ui-dev'
+    image: 'excellalabs/skillustrator-ui-dev'
     build:
       context: ./UI
       dockerfile: Dockerfile.AppAndAngular2
@@ -31,7 +31,7 @@ services:
       - aspnetcoreapp-network
 
   postgres:
-    container_name: 'skillustrator-postgres'
+    container_name: 'skillu-postgres-dev'
     image: postgres
     volumes:
       - 'postgres:/var/lib/postgresql/data'
