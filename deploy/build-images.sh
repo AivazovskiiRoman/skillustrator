@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e -x
 
 ENV_SUFFIX="-dev"
 if [ "$TRAVIS_BRANCH" == "master" ]; then 
@@ -9,5 +10,6 @@ elif [ "$TRAVIS_BRANCH" == "production" ]; then
   ENV_SUFFIX="-prod"
 fi
 
+docker ps 
 docker-compose -f docker-compose$ENV_SUFFIX.yml build
 docker-compose -f docker-compose$ENV_SUFFIX.yml up -d && docker ps
