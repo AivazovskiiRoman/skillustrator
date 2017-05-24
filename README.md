@@ -83,6 +83,8 @@ The UI should be running
 
 1. To see the console output within the container, run `docker logs <container_name>`
 
+1. To run the tests for the API, use `docker exec -it <container_name> dotnet tests`
+
 ## Add a database migration when model changes 
 
 1. Log into the app container (see instructions above). There is also a script available API/scpirts/appContainerLogin.sh that runs the below.
