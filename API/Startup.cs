@@ -19,8 +19,7 @@ namespace ConsoleApplication
         {
             var builder = new ConfigurationBuilder() // Collection of sources for read/write key/value pairs
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables(); // Overrides environment variables with valiues from config files/etc
             Configuration = builder.Build();
         }

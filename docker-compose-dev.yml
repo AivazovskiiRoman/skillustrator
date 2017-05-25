@@ -8,6 +8,8 @@ services:
     build:
       context: ./API
       dockerfile: Dockerfile.Prod
+    environment: 
+      - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "8080:5000"
     depends_on:
