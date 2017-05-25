@@ -12,10 +12,12 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "8080:5000"
-    depends_on:
-      - postgres
     networks:
       - aspnetcoreapp-network
+    depends_on:
+      - postgres
+    links:
+      - postgres
 
   ui:
     container_name: 'skillustrator-ui-dev'
@@ -25,12 +27,12 @@ services:
       dockerfile: Dockerfile.AppAndAngular2
     ports:
       - "80:4200"
-    links:
-      - api
-    depends_on:
-      - api
     networks:
       - aspnetcoreapp-network
+    depends_on:
+      - api
+    links:
+      - api
 
   postgres:
     container_name: 'skillustrator-postgres-dev'
