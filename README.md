@@ -13,7 +13,7 @@ It is fully Dockerized with an Angular 2 front-end, ASP.NET Core API, and Postgr
 
 Please contribute! See our [kanban board](https://github.com/excellalabs/skillustrator/projects/1) for stories.
 
-## How it works 
+## How it works
 
 Users log into their profile and for each skill they have, they rank their level of expertise, the amount of time they used the skill, and when the last time was they used the skill. 
 
@@ -64,10 +64,12 @@ The entire app will spin up - UI (Angular 2), API (ASP.NET Core) and database (P
 
 1. To start the containers & the app, run: 
 
-    `docker-compose up -d`
+    `docker-compose up`
 
 The UI should be running 
 (http://localhost:4200/person/999, test user seeded there).
+
+
 
 ## Operations
 
