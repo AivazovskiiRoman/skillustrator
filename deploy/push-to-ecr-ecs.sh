@@ -43,8 +43,8 @@ if [ -z "$TRAVIS_PULL_REQUEST" ] || [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
     IMAGE_FULLNAME=$IMAGE_BASENAME$ENV_SUFFIX
     IMAGE_URL_BASE=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_BASENAME
-    IMAGE_2_FULLNAME=$IMAGE_2_BASENAME$ENV_SUFFIX
-    IMAGE_2_URL_BASE=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_2_BASENAME
+    IMAGE2_FULLNAME=$IMAGE2_BASENAME$ENV_SUFFIX
+    IMAGE2_URL_BASE=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE2_BASENAME
     
     #IMAGE_URL=$IMAGE_URL_BASE:$TRAVIS_COMMIT
     SERVICE_FULLNAME=$SERVICE_BASENAME$ENV_SUFFIX
@@ -52,11 +52,11 @@ if [ -z "$TRAVIS_PULL_REQUEST" ] || [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     # Only push a new build/image if dev deploy; staging and production will use that same build (tagged with latest)
     if [ "$TRAVIS_BRANCH" == "master" ]; then
       pushToEcr $IMAGE_FULLNAME $IMAGE_URL_BASE
-      pushToEcr $IMAGE_2_FULLNAME $IMAGE_2_URL_BASE
+      pushToEcr $IMAGE2_FULLNAME $IMAGE2_URL_BASE
     fi 
 
     echo "Deploying $TRAVIS_BRANCH on service $SERVICE_FULLNAME (cluster: $CLUSTER_NAME)"
     
     # This will deploy the build/image tagged with latest from ECR to ECS
-    deploy-ecs/ecs-deploy.sh -c $CLUSTER_NAME -n $SERVICE_FULLNAME -i $IMAGE_URL_BASE -r $AWS_DEFAULT_REGION --timeout 600
+    deploy/ecs-deploy.sh -c $CLUSTER_NAME -n $SERVICE_FULLNAME -i $IMAGE_URL_BASE -r $AWS_DEFAULT_REGION --timeout 600
 fi 
