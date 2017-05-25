@@ -3,7 +3,7 @@ version: '2'
 services:
 
   api:
-    container_name: 'skillu-api-dev'
+    container_name: 'skillustrator-api-dev'
     image: 'excellalabs/skillustrator-api-dev'
     build:
       context: ./API
@@ -16,7 +16,7 @@ services:
       - aspnetcoreapp-network
 
   ui:
-    container_name: 'skillu-ui-dev'
+    container_name: 'skillustrator-ui-dev'
     image: 'excellalabs/skillustrator-ui-dev'
     build:
       context: ./UI
@@ -31,7 +31,7 @@ services:
       - aspnetcoreapp-network
 
   postgres:
-    container_name: 'skillu-postgres-dev'
+    container_name: 'skillustrator-postgres-dev'
     image: postgres
     volumes:
       - 'postgres:/var/lib/postgresql/data'
