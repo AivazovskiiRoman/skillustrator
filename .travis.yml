@@ -22,7 +22,7 @@ after_success:
 
   - chmod +x deploy/ecs-deploy.sh
   - chmod +x deploy/push-to-ecr-ecs.sh
-  - push-to-ecr-ecs.sh
+  - deploy/push-to-ecr-ecs.sh
 
 
 ### CI environment variables ###
