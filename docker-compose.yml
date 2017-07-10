@@ -3,7 +3,7 @@ version: '2'
 services:
 
   api:
-    container_name: 'skillu_api_dev'
+    container_name: 'skillustrator-api-dev'
     image: 'excellalabs/skillustrator-api-dev'
     build:
       context: ./API
@@ -19,7 +19,7 @@ services:
       - aspnetcoreapp-network
 
   ui:
-    container_name: 'skillu_ui_dev'
+    container_name: 'skillustrator-ui-dev'
     image: 'excellalabs/skillustrator-ui-dev'
     build:
       context: ./UI

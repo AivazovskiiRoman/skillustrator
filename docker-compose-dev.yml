@@ -4,7 +4,7 @@ services:
 
   api:
     container_name: 'skillustrator-api-dev'
-    image: 'skillustrator-api-dev'
+    image: 'excellalabs/skillustrator-api-dev'
     build:
       context: ./API
       dockerfile: Dockerfile.Prod
@@ -21,10 +21,10 @@ services:
 
   ui:
     container_name: 'skillustrator-ui-dev'
-    image: 'skillustrator-ui-dev'
+    image: 'excellalabs/skillustrator-ui-dev'
     build:
       context: ./UI
-      dockerfile: Dockerfile.Prod
+      dockerfile: Dockerfile.AppAndAngular2
     ports:
       - "80:4200"
     networks:
@@ -36,7 +36,7 @@ services:
 
   postgres:
     container_name: 'skillustrator-postgres-dev'
-    image: postgres
+    image: postgres:9.6.3
     volumes:
       - 'postgres:/var/lib/postgresql/data'
     environment:

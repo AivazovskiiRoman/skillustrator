@@ -10,20 +10,33 @@ elif [ "$TRAVIS_BRANCH" == "production" ]; then
   ENV_SUFFIX="-prod"
 fi
 
-# docker ps 
-# docker-compose -f docker-compose$ENV_SUFFIX.yml build
-# docker-compose -f docker-compose$ENV_SUFFIX.yml up -d && docker ps
+# # docker ps 
+# # docker-compose -f docker-compose$ENV_SUFFIX.yml build
+# # docker-compose -f docker-compose$ENV_SUFFIX.yml up -d && docker ps
 
 
-docker-compose build --pull
+# docker-compose build --pull
 
-# docker-compose run excella-retro npm run lint
-# docker-compose run ng test --browsers Chrome_no_sandbox -w false
-# docker-compose run npm run e2e
+# # docker-compose run excella-retro npm run lint
+# # docker-compose run ng test --browsers Chrome_no_sandbox -w false
+# # docker-compose run npm run e2e
 
-docker-compose run ui npm cache clean
-docker-compose run ui ng build --prod
+# docker-compose run ui npm cache clean
+# docker-compose run ui ng build --prod
 
-#if [ "$TRAVIS_BRANCH" == "production" ]; then
-#docker-compose -f docker-compose-prod.yml up -d
-#fi
+# #if [ "$TRAVIS_BRANCH" == "production" ]; then
+# #docker-compose -f docker-compose-prod.yml up -d
+# #fi
+
+
+
+echo "Before compose..."
+docker images && docker ps && docker volume ls 
+echo "Starting compose..."
+docker-compose -f docker-compose$ENV_SUFFIX.yml build
+docker-compose -f docker-compose$ENV_SUFFIX.yml up -d && docker images && docker ps && docker volume ls 
+
+sleep 10s # wait a bit for the app to start up
+
+# Run tests against release build. Using `vstest`` as it allows pointing to a dll (published dll); `test`` currently does not. 
+docker exec -it skillustrator-api$ENV_SUFFIX dotnet vstest /app/bin/Release/netcoreapp1.1/publish/API.dll 
