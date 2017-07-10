@@ -24,7 +24,7 @@ services:
     image: 'skillustrator-ui-dev'
     build:
       context: ./UI
-      dockerfile: Dockerfile.AppAndAngular2
+      dockerfile: Dockerfile.Prod
     ports:
       - "80:4200"
     networks:

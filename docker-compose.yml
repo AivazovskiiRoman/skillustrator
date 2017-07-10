@@ -24,6 +24,7 @@ services:
     build:
       context: ./UI
       dockerfile: Dockerfile.AppAndAngular2
+    command: npm start
     volumes:
       - ./UI:/app
       - /app/node_modules # map container's node_modules directory back into the host's source, otherwise npm install would have to be run locally

@@ -9,6 +9,6 @@ EXPOSE 4200/tcp
 COPY . /app/
 WORKDIR /app
 
-RUN npm install
+RUN npm install --quiet
 
-CMD ["npm", "start"]
+#CMD ["npm", "start"]
