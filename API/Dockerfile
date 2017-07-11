@@ -10,7 +10,6 @@ WORKDIR /app
 
 
 
-
 #------------------------
 # USAGE - build image, and expose ports, the current app folder: 
 # 		docker build -t mydemos:aspnetcorehelloworld .

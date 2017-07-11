@@ -31,7 +31,7 @@ fi
 
 
 echo "Before compose..."
-docker images && docker ps && docker volume ls 
+docker images && docker ps && docker volume ls && docker -v
 echo "Starting compose..."
 docker-compose -f docker-compose$ENV_SUFFIX.yml build
 docker-compose -f docker-compose$ENV_SUFFIX.yml up -d && docker images && docker ps && docker volume ls 
