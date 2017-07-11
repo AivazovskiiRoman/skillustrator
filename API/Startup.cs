@@ -73,7 +73,7 @@ namespace ConsoleApplication
             // {
             //     serviceScope.ServiceProvider.GetService<SkillustratorContext>().Database.Migrate();
             // }
-            TestDataSeeder.InitializeDeficiencyDatabaseAsync(app.ApplicationServices, true).Wait();
+            CircuitBreaker.Do(() => TestDataSeeder.InitializeDeficiencyDatabaseAsync(app.ApplicationServices, true).Wait(), TimeSpan.FromSeconds(3));
 
             // Not currently seeding anything, fix
             var applicantSeeder = new TestDataSeeder();
