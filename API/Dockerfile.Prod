@@ -1,7 +1,5 @@
-# Describes how to build a Docker image. Each instruction creates a new layer in the image. 
-
-FROM microsoft/dotnet:1.1.1-sdk
-
+FROM microsoft/aspnetcore-build:2.0.0-preview2 as publish
+#FROM microsoft/aspnetcore-build:2.0.0-preview2
 # set up package cache
 # RUN curl -o /tmp/packagescache.tar.gz https://dist.asp.net/packagecache/aspnetcore.packagecache-1.0.1-debian.8-x64.tar.gz && \
 #     mkdir /packagescache && cd /packagescache && \
@@ -12,15 +10,23 @@ FROM microsoft/dotnet:1.1.1-sdk
 # set env var for packages cache
 # ENV DOTNET_HOSTING_OPTIMIZATION_CACHE /packagescache
 
-# set up network
+
+COPY . /publish/
+WORKDIR /publish
+
+RUN ["dotnet", "restore"]
+RUN ["dotnet", "build"]
+RUN dotnet publish --output ./out
+
+
+#######################################################
+# For running the app 
+FROM microsoft/aspnetcore:2.0.0-preview2
+WORKDIR /published
+COPY --from=publish /publish/out .
+
 EXPOSE 5000/tcp
 ENV ASPNETCORE_URLS http://*:5000
 
-# copy files from current directory to target on container - i.e. if you want your app in the container and want to deploy it
-COPY . /app/
-WORKDIR /app
+ENTRYPOINT ["dotnet", "API.dll"]
 
-# this is useful is you want the container to be running the app when it's finished starting up
-RUN ["dotnet", "restore"]
-RUN ["dotnet", "build"]
-ENTRYPOINT ["dotnet", "run"]
