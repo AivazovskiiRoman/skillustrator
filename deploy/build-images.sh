@@ -39,4 +39,4 @@ docker-compose -f docker-compose$ENV_SUFFIX.yml up -d && docker images && docker
 sleep 10s # wait a bit for the app to start up
 
 # Run tests against release build. Using `vstest`` as it allows pointing to a dll (published dll); `test`` currently does not. 
-docker exec -it skillustrator-api$ENV_SUFFIX dotnet vstest /app/bin/Release/netcoreapp1.1/publish/API.dll 
+docker exec -it excellalabs/skillustrator-api$ENV_SUFFIX dotnet vstest /app/bin/Release/netcoreapp1.1/publish/API.dll 
