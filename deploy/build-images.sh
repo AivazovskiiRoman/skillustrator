@@ -37,6 +37,7 @@ docker-compose -f docker-compose$ENV_SUFFIX.yml build
 docker-compose -f docker-compose$ENV_SUFFIX.yml up -d && docker images && docker ps && docker volume ls 
 
 sleep 10s # wait a bit for the app to start up
-
+docker ps
+docker logs skillustrator-api$ENV_SUFFIX
 # Run tests against release build. Using `vstest`` as it allows pointing to a dll (published dll); `test`` currently does not. 
 docker exec -it skillustrator-api$ENV_SUFFIX dotnet vstest API.dll 
