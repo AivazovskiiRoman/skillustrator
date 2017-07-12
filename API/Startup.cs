@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Skillustrator.Api.Entities;
 using Newtonsoft.Json;
+using System;
 
 namespace ConsoleApplication
 {
