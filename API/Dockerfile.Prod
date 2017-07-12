@@ -10,14 +10,13 @@ FROM microsoft/aspnetcore-build:2.0.0-preview2 as publish
 # set env var for packages cache
 # ENV DOTNET_HOSTING_OPTIMIZATION_CACHE /packagescache
 
-
 COPY . /publish/
 WORKDIR /publish
 
 RUN ["dotnet", "restore"]
 RUN ["dotnet", "build"]
 RUN dotnet publish --output ./out
-
+#RUN dotnet vstest out/API.dll 
 
 #######################################################
 # For running the app 
