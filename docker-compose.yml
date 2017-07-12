@@ -12,7 +12,7 @@ services:
       - ./API:/app
     ports:
       - "5000:5000"
-    entrypoint: ["sh", "./scripts/go.sh"] 
+    entrypoint: ["sh", "./scripts/go.sh"]
     depends_on:
       - postgres
     networks:
