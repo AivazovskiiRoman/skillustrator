@@ -1,4 +1,5 @@
-#! /bin/bash
+#!/bin/bash
+set -e -x
 
 # ############ Env vars used, set in CI ############################################################
 # AWS_ACCESS_KEY=$AWS_ACCESS_KEY_ID
@@ -18,7 +19,7 @@
 # ################################################################################################
 
 pushToEcr () {
-    eval $(aws ecr get-login --region $AWS_DEFAULT_REGION)
+    eval $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
         
     echo "Pushing $1 to $2"
     docker tag $1 $2:latest
@@ -30,7 +31,7 @@ pushToEcr () {
 
 if [ -z "$TRAVIS_PULL_REQUEST" ] || [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     
-    ENV_SUFFIX=""
+    ENV_SUFFIX="-dev"
     if [ "$TRAVIS_BRANCH" == "master" ]; then 
       ENV_SUFFIX="-dev"
     elif [ "$TRAVIS_BRANCH" == "staging" ]; then 
