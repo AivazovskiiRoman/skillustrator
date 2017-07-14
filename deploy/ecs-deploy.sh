@@ -1,6 +1,7 @@
 set -o errexit
 set -o pipefail
 set -u
+set -x
 
 function usage() {
     set -e
@@ -296,8 +297,8 @@ if [ $SERVICE != false ]; then
   # Get current task definition name from service
   TASK_DEFINITION=`$AWS_ECS describe-services --services $SERVICE --cluster $CLUSTER | jq -r .services[0].taskDefinition`
   # Strip :<revision> off so it uses latest task definition
-  TASK_DEFINITION_ARRAY=(${TASK_DEFINITION//:/ })
-  TASK_DEFINITION=${TASK_DEFINITION_ARRAY[0]}
+  # TASK_DEFINITION_ARRAY=(${TASK_DEFINITION//:/ })
+  # TASK_DEFINITION=${TASK_DEFINITION_ARRAY[0]}
 fi
 
 echo "Current task definition: $TASK_DEFINITION";
