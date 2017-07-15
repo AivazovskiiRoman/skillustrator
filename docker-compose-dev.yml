@@ -25,6 +25,7 @@ services:
     build:
       context: ./UI
       dockerfile: Dockerfile.AppAndAngular2
+    command: npm start
     ports:
       - "4200:4200"
     networks:
