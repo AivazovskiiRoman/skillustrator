@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e -x
+set -e
 
 # ############ Env vars used, set in CI ############################################################
 # AWS_ACCESS_KEY=$AWS_ACCESS_KEY_ID

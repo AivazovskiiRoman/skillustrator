@@ -1,7 +1,6 @@
 set -o errexit
 set -o pipefail
 set -u
-set -x
 
 function usage() {
     set -e
