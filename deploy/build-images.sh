@@ -14,7 +14,6 @@ fi
 # # docker-compose -f docker-compose$ENV_SUFFIX.yml build
 # # docker-compose -f docker-compose$ENV_SUFFIX.yml up -d && docker ps
 
-# docker-compose build --pull
 
 # # docker-compose run excella-retro npm run lint
 # # docker-compose run ng test --browsers Chrome_no_sandbox -w false
@@ -27,9 +26,17 @@ fi
 # #docker-compose -f docker-compose-prod.yml up -d
 # #fi
 
-
-echo "Before compose..."
 docker images && docker ps && docker volume ls && docker -v
-echo "Starting compose..."
-docker-compose -f docker-compose$ENV_SUFFIX.yml build
-docker-compose -f docker-compose$ENV_SUFFIX.yml up -d && docker images && docker ps && docker volume ls 
+
+docker-compose build --pull
+
+#TODO: can these be moved into a docker-compose file in a script so they are containned? Multi-stage.   
+docker-compose run ui npm cache clean
+docker-compose run ui ng build --prod
+
+#docker-compose -f docker-compose$ENV_SUFFIX.yml build
+docker-compose -f docker-compose$ENV_SUFFIX.yml up -d
+docker images && docker ps && docker volume ls 
+
+
+
