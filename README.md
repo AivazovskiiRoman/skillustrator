@@ -13,6 +13,15 @@ It is fully Dockerized with an Angular 2 front-end, ASP.NET Core API, and Postgr
 
 Please contribute! See our [kanban board](https://github.com/excellalabs/skillustrator/projects/1) for stories.
 
+Here are a few screenshots of a user managing skills, viewing a user's skills profile, and search results for a skill:
+
+![Manage Skills](screenshots/Skillustrator-ManageSkills.JPG)
+
+![Skills Profile](screenshots/Skillustrator-Profile1-responsiveDesign.JPG)
+
+![Search](screenshots/Skillustrator-SearchResults.JPG)
+
+
 ## How it works
 
 Users log into their profile and for each skill they have, they rank their level of expertise, the amount of time they used the skill, and when the last time was they used the skill. 
